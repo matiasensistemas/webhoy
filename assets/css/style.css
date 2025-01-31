@@ -886,6 +886,57 @@ body,html{
     }
 }
 
+
+
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #25D366;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.whatsapp-link:hover {
+  opacity: 0.8;
+}
+
+.whatsapp-link img {
+  vertical-align: middle;
+}
+
+
+
+
+
+
 @media (max-width:400px){
     .embed-wrap-inside:after{
         width:90%
