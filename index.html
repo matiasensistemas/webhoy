@@ -1,930 +1,400 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>WebHoy | Encontrá. Compará. Calculá.</title>
-
-    <meta name="description"
-          content="WebHoy: oportunidades, calculadoras, tecnología, inmuebles y herramientas útiles para Argentina.">
-
-    <meta name="keywords"
-          content="Argentina, ofertas, precios, calculadoras, tecnología, inmuebles, WebHoy">
-
-    <meta name="author" content="WebHoy.com.ar">
-
-    <meta property="og:title"
-          content="WebHoy | Encontrá. Compará. Calculá.">
-
-    <meta property="og:description"
-          content="Oportunidades, herramientas y datos útiles para Argentina.">
-
-    <meta property="og:type" content="website">
-
-    <meta property="og:url"
-          content="https://webhoy.com.ar/">
-
-    <link rel="canonical"
-          href="https://webhoy.com.ar/">
-
-    <link rel="icon"
-          href="assets/images/favicon.png">
-
-    <link rel="apple-touch-icon"
-          href="assets/images/favicon.png">
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg: #07090d;
-            --card: #11151c;
-            --card-hover: #171d27;
-            --border: rgba(255,255,255,.08);
-            --text: #f5f7fa;
-            --muted: #9aa4b2;
-            --accent: #7c5cff;
-            --accent-2: #00d4ff;
-            --green: #25d366;
-            --orange: #ff9f43;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background:
-                radial-gradient(circle at 20% 0%, rgba(124,92,255,.18), transparent 30%),
-                radial-gradient(circle at 90% 10%, rgba(0,212,255,.10), transparent 25%),
-                var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.5;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            width: min(1080px, calc(100% - 32px));
-            margin: auto;
-        }
-
-        /* HEADER */
-
-        header {
-            padding: 28px 0 10px;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 800;
-            font-size: 20px;
-            letter-spacing: -.5px;
-        }
-
-        .brand img {
-            width: 42px;
-            height: 42px;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        /* HERO */
-
-        .hero {
-            text-align: center;
-            padding: 70px 0 55px;
-        }
-
-        .hero-logo {
-            width: 88px;
-            height: 88px;
-            object-fit: contain;
-            border-radius: 24px;
-            margin-bottom: 22px;
-            box-shadow: 0 20px 60px rgba(0,0,0,.35);
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 76px);
-            line-height: .95;
-            letter-spacing: -4px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #fff, #b9b1ff, #70e7ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: var(--muted);
-            font-size: clamp(17px, 2vw, 21px);
-        }
-
-        /* SEARCH */
-
-        .search-box {
-            margin: 35px auto 0;
-            max-width: 650px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 18px 22px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,.06);
-            color: white;
-            outline: none;
-            font-size: 16px;
-            backdrop-filter: blur(15px);
-        }
-
-        .search-box input::placeholder {
-            color: #747d89;
-        }
-
-        .search-box input:focus {
-            border-color: rgba(124,92,255,.6);
-        }
-
-        /* SECTION */
-
-        section {
-            padding: 25px 0 55px;
-        }
-
-        .section-title {
-            margin-bottom: 20px;
-        }
-
-        .section-title h2 {
-            font-size: 25px;
-            letter-spacing: -.7px;
-        }
-
-        .section-title p {
-            color: var(--muted);
-            margin-top: 4px;
-            font-size: 14px;
-        }
-
-        /* CARDS */
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .card {
-            background: rgba(17,21,28,.88);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 25px;
-            min-height: 170px;
-            transition: .25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            background: var(--card-hover);
-            border-color: rgba(255,255,255,.16);
-        }
-
-        .card-icon {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-size: 19px;
-            margin-bottom: 7px;
-        }
-
-        .card p {
-            color: var(--muted);
-            font-size: 14px;
-            max-width: 400px;
-        }
-
-        .card-arrow {
-            position: absolute;
-            right: 22px;
-            bottom: 20px;
-            color: #7f8a98;
-            font-size: 20px;
-        }
-
-        /* FEATURE */
-
-        .feature {
-            background:
-                linear-gradient(135deg,
-                rgba(124,92,255,.20),
-                rgba(0,212,255,.07)),
-                var(--card);
-
-            border: 1px solid rgba(124,92,255,.25);
-            border-radius: 24px;
-            padding: 30px;
-            margin-top: 10px;
-        }
-
-        .feature-label {
-            color: #bcb3ff;
-            text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
-        }
-
-        .feature h2 {
-            font-size: clamp(25px, 4vw, 36px);
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-        }
-
-        .feature p {
-            color: var(--muted);
-            max-width: 650px;
-            margin-bottom: 22px;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 18px;
-            border-radius: 12px;
-            background: white;
-            color: #08090c;
-            font-weight: 700;
-            font-size: 14px;
-            transition: .2s ease;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* CALCULATORS */
-
-        .tools {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 12px;
-        }
-
-        .tool {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 18px;
-            border-radius: 16px;
-            transition: .2s;
-        }
-
-        .tool:hover {
-            background: var(--card-hover);
-        }
-
-        .tool strong {
-            display: block;
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
-
-        .tool span {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* SERVICES */
-
-        .service {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            background: linear-gradient(
-                100deg,
-                rgba(37,211,102,.12),
-                rgba(37,211,102,.03)
-            );
-            border: 1px solid rgba(37,211,102,.18);
-            border-radius: 22px;
-            padding: 25px;
-        }
-
-        .service h2 {
-            font-size: 22px;
-            margin-bottom: 5px;
-        }
-
-        .service p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .whatsapp {
-            background: var(--green);
-            color: #071008;
-            white-space: nowrap;
-        }
-
-        /* FOOTER */
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 30px;
-            padding: 30px 0 45px;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social a:hover {
-            color: white;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 700px) {
-
-            .container {
-                width: min(100% - 22px, 1080px);
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 55px 0 40px;
-            }
-
-            .hero h1 {
-                letter-spacing: -2.5px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tools {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .service {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-        }
-
-        @media (max-width: 420px) {
-
-            .tools {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebHoy | Encontrá. Compará. Calculá.</title>
+  <meta name="description" content="WebHoy: herramientas, precios, oportunidades y datos útiles para Argentina.">
+  <meta name="author" content="WebHoy.com.ar">
+  <link rel="canonical" href="https://webhoy.com.ar/">
+  <link rel="icon" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07090d;--card:#11151c;--card2:#171d27;--border:rgba(255,255,255,.09);
+      --text:#f5f7fa;--muted:#9aa4b2;--accent:#7c5cff;--cyan:#59d8ff;
+      --green:#25d366;--gold:#ffb84d;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,sans-serif;color:var(--text);background:
+      radial-gradient(circle at 18% 0%,rgba(124,92,255,.17),transparent 31%),
+      radial-gradient(circle at 90% 12%,rgba(0,212,255,.08),transparent 27%),var(--bg);
+      min-height:100vh;line-height:1.5
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1060px,calc(100% - 28px));margin:auto}
+    header{padding:25px 0 5px}
+    .nav{display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:800}
+    .brand img{width:40px;height:40px;object-fit:contain;border-radius:11px}
+    .nav-links{display:flex;gap:20px;color:var(--muted);font-size:13px}
+    .nav-links a:hover{color:#fff}
+
+    .hero{text-align:center;padding:55px 0 36px}
+    .hero-logo{width:72px;height:72px;object-fit:contain;border-radius:19px;margin-bottom:18px}
+    .hero h1{
+      font-size:clamp(39px,6vw,60px);line-height:1.02;letter-spacing:-3px;font-weight:800;
+      margin-bottom:16px
+    }
+    .gradient{
+      background:linear-gradient(90deg,#fff,#bdb4ff,#69ddff);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .hero p{max-width:650px;margin:auto;color:var(--muted);font-size:17px}
+    .search{max-width:650px;margin:26px auto 0}
+    .search input{
+      width:100%;padding:16px 19px;border-radius:15px;border:1px solid var(--border);
+      background:rgba(255,255,255,.055);color:#fff;outline:none;font-size:15px
+    }
+    .search input:focus{border-color:rgba(124,92,255,.65);box-shadow:0 0 0 3px rgba(124,92,255,.08)}
+
+    section{padding:22px 0 44px}
+    .section-title{margin-bottom:17px}
+    .section-title h2{font-size:23px;letter-spacing:-.7px}
+    .section-title p{color:var(--muted);font-size:13px;margin-top:3px}
+
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{
+      background:rgba(17,21,28,.9);border:1px solid var(--border);border-radius:19px;
+      padding:23px;min-height:145px;transition:.2s;position:relative;overflow:hidden
+    }
+    .card:hover{transform:translateY(-3px);background:var(--card2);border-color:rgba(255,255,255,.16)}
+    .icon{font-size:27px;margin-bottom:12px}
+    .card h3{font-size:18px;margin-bottom:6px}
+    .card p{color:var(--muted);font-size:13px;max-width:440px}
+    .arrow{position:absolute;right:20px;bottom:17px;color:#7f8996}
+
+    .panel{
+      background:linear-gradient(135deg,rgba(124,92,255,.18),rgba(0,212,255,.05)),var(--card);
+      border:1px solid rgba(124,92,255,.23);border-radius:21px;padding:24px
+    }
+    .label{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#bdb4ff;text-transform:uppercase;margin-bottom:7px}
+    .panel h2{font-size:25px;letter-spacing:-.8px;margin-bottom:6px}
+    .panel p{color:var(--muted);font-size:13px}
+
+    .dollars{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .quote{
+      padding:18px;border:1px solid var(--border);background:rgba(0,0,0,.18);
+      border-radius:15px
+    }
+    .quote-top{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}
+    .quote strong{display:block;font-size:27px;margin:7px 0 2px}
+    .quote small{color:#77808c;font-size:10px}
+
+    .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .tool{
+      background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;
+      cursor:pointer;transition:.2s
+    }
+    .tool:hover{background:var(--card2);transform:translateY(-2px)}
+    .tool strong{display:block;font-size:14px;margin-bottom:4px}
+    .tool span{font-size:12px;color:var(--muted)}
+
+    .calculator{
+      margin-top:15px;padding:20px;border:1px solid var(--border);background:rgba(17,21,28,.82);
+      border-radius:18px
+    }
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;margin-top:14px}
+    .calc-grid input,.calc-grid select{
+      width:100%;padding:12px;border-radius:11px;border:1px solid var(--border);
+      background:#0b0e13;color:#fff;outline:none
+    }
+    .btn{
+      border:0;border-radius:11px;padding:12px 16px;background:#fff;color:#08090c;
+      font-weight:700;cursor:pointer
+    }
+    .result{margin-top:15px;padding:14px;border-radius:12px;background:rgba(124,92,255,.1);display:none}
+    .result strong{font-size:21px}
+    .note{font-size:10px;color:#6f7884;margin-top:8px}
+
+    .service{
+      display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px;
+      border-radius:20px;border:1px solid rgba(37,211,102,.18);
+      background:linear-gradient(100deg,rgba(37,211,102,.11),rgba(37,211,102,.025))
+    }
+    .service h2{font-size:20px;margin-bottom:4px}.service p{color:var(--muted);font-size:13px}
+    .whatsapp{background:var(--green);color:#061008;white-space:nowrap}
+
+    footer{border-top:1px solid var(--border);padding:27px 0 38px;margin-top:10px}
+    .footer{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}
+    .social{display:flex;gap:14px}.social a:hover{color:#fff}
+
+    .hidden{display:none!important}
+    .no-results{color:var(--muted);padding:15px 0;font-size:13px}
+
+    @media(max-width:700px){
+      .container{width:calc(100% - 22px)}
+      .nav-links{display:none}
+      .hero{padding:45px 0 30px}
+      .hero h1{letter-spacing:-2px}
+      .grid,.dollars{grid-template-columns:1fr}
+      .tools{grid-template-columns:1fr 1fr}
+      .calc-grid{grid-template-columns:1fr 1fr}
+      .service{flex-direction:column;align-items:flex-start}
+      .footer{flex-direction:column}
+    }
+    @media(max-width:420px){
+      .tools,.calc-grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 
 <body>
-
 <header>
-    <div class="container nav">
-
-        <a href="/" class="brand">
-            <img src="assets/images/logo.png" alt="WebHoy">
-            <span>WEBHOY</span>
-        </a>
-
-        <nav class="nav-links">
-            <a href="#oportunidades">Oportunidades</a>
-            <a href="#herramientas">Herramientas</a>
-            <a href="#inmuebles">Inmuebles</a>
-        </nav>
-
-    </div>
+  <div class="container nav">
+    <a class="brand" href="/">
+      <img src="assets/images/logo.png" alt="WebHoy">
+      <span>WEBHOY</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#oportunidades">Oportunidades</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#inmuebles">Inmuebles</a>
+    </nav>
+  </div>
 </header>
 
-
 <main>
+  <section class="hero">
+    <div class="container">
+      <img class="hero-logo" src="assets/images/logo.png" alt="WebHoy">
+      <h1>Encontrá. <span class="gradient">Compará. Calculá.</span></h1>
+      <p>Información, herramientas y oportunidades útiles para Argentina.</p>
+      <div class="search">
+        <input id="search" type="search" placeholder="¿Qué estás buscando? Ej.: dólar, cuotas, notebooks..." autocomplete="off">
+      </div>
+    </div>
+  </section>
 
-    <!-- HERO -->
+  <section id="oportunidades">
+    <div class="container">
+      <div class="section-title">
+        <h2>🔥 ¿Qué necesitás?</h2>
+        <p>Entrá directo a lo que estás buscando.</p>
+      </div>
+      <div class="grid" id="categoryGrid">
+        <a class="card searchable" data-keywords="ofertas oportunidades comprar precios ahorro" href="#oportunidades">
+          <div class="icon">🔥</div><h3>Oportunidades</h3>
+          <p>Productos, precios y oportunidades que vale la pena mirar.</p><span class="arrow">→</span>
+        </a>
+        <a class="card searchable" data-keywords="calculadoras herramientas cuentas cuotas dolar ahorro" href="#herramientas">
+          <div class="icon">🧮</div><h3>Calculadoras</h3>
+          <p>Resolvé cuentas útiles en segundos.</p><span class="arrow">→</span>
+        </a>
+        <a class="card searchable" data-keywords="inmuebles casas departamentos alquiler precio metro cuadrado" href="#inmuebles">
+          <div class="icon">🏠</div><h3>Inmuebles</h3>
+          <p>Precios, alquileres y herramientas para entender la vivienda.</p><span class="arrow">→</span>
+        </a>
+        <a class="card searchable" data-keywords="tecnologia notebook celular computadora ram" href="#tecnologia">
+          <div class="icon">💻</div><h3>Tecnología</h3>
+          <p>Guías y comparaciones para comprar tecnología con más información.</p><span class="arrow">→</span>
+        </a>
+      </div>
+      <div id="noResults" class="no-results hidden">No encontramos esa categoría todavía. Probá con “dólar”, “cuotas”, “inmuebles” o “tecnología”.</div>
+    </div>
+  </section>
 
-    <section class="hero">
-
-        <div class="container">
-
-            <img
-                class="hero-logo"
-                src="assets/images/logo.png"
-                alt="Logo WebHoy">
-
-            <h1>
-                Encontrá.<br>
-                <span class="gradient-text">
-                    Compará. Calculá.
-                </span>
-            </h1>
-
-            <p>
-                Información, oportunidades y herramientas útiles
-                para tomar mejores decisiones.
-            </p>
-
-            <div class="search-box">
-
-                <input
-                    type="search"
-                    id="search"
-                    placeholder="¿Qué estás buscando?"
-                    autocomplete="off">
-
-            </div>
-
+  <section>
+    <div class="container">
+      <div class="panel">
+        <div class="label">WEBHOY MONEY DESK</div>
+        <h2>💵 Dólar en tiempo real</h2>
+        <p>Cotizaciones cargadas automáticamente desde una API pública. Los valores se muestran como referencia.</p>
+        <div class="dollars">
+          <div class="quote">
+            <div class="quote-top"><span>Dólar oficial</span><span id="officialStatus">cargando…</span></div>
+            <strong id="officialSell">—</strong>
+            <small>venta • ARS por USD</small>
+          </div>
+          <div class="quote">
+            <div class="quote-top"><span>Dólar blue</span><span id="blueStatus">cargando…</span></div>
+            <strong id="blueSell">—</strong>
+            <small>venta • ARS por USD</small>
+          </div>
         </div>
+        <div class="note">Fuente de cotización: DolarApi.com. WebHoy no ofrece asesoramiento financiero.</div>
+      </div>
+    </div>
+  </section>
 
-    </section>
+  <section id="herramientas">
+    <div class="container">
+      <div class="section-title">
+        <h2>🧮 Herramientas útiles</h2>
+        <p>Primera versión funcional. Vamos a seguir agregando herramientas.</p>
+      </div>
+      <div class="tools">
+        <a class="tool searchable" data-keywords="dolar pesos dolares conversor cotizacion" href="#dolar"><strong>💵 Pesos ↔ dólares</strong><span>Conversor con cotización actual.</span></a>
+        <a class="tool searchable" data-keywords="cuotas tarjeta interes compra financiacion" href="#cuotas"><strong>💳 Calculadora de cuotas</strong><span>Estimá cuota y total a pagar.</span></a>
+        <a class="tool searchable" data-keywords="ahorro dinero objetivo" href="#cuotas"><strong>💰 Objetivo de ahorro</strong><span>Próxima herramienta.</span></a>
+      </div>
 
-
-    <!-- CATEGORIAS -->
-
-    <section>
-
-        <div class="container">
-
-            <div class="section-title">
-                <h2>¿Qué necesitás?</h2>
-                <p>Entrá directamente a lo que estás buscando.</p>
-            </div>
-
-
-            <div class="grid">
-
-                <a href="#oportunidades" class="card">
-
-                    <div class="card-icon">🔥</div>
-
-                    <h3>Oportunidades</h3>
-
-                    <p>
-                        Encontrá productos, precios y oportunidades
-                        que vale la pena mirar.
-                    </p>
-
-                    <span class="card-arrow">→</span>
-
-                </a>
-
-
-                <a href="#herramientas" class="card">
-
-                    <div class="card-icon">🧮</div>
-
-                    <h3>Calculadoras</h3>
-
-                    <p>
-                        Resolvé cuentas útiles en segundos.
-                    </p>
-
-                    <span class="card-arrow">→</span>
-
-                </a>
-
-
-                <a href="#inmuebles" class="card">
-
-                    <div class="card-icon">🏠</div>
-
-                    <h3>Inmuebles</h3>
-
-                    <p>
-                        Precios, alquileres y herramientas
-                        para entender el mercado inmobiliario.
-                    </p>
-
-                    <span class="card-arrow">→</span>
-
-                </a>
-
-
-                <a href="#tecnologia" class="card">
-
-                    <div class="card-icon">💻</div>
-
-                    <h3>Tecnología</h3>
-
-                    <p>
-                        Guías y comparaciones para comprar
-                        tecnología con más información.
-                    </p>
-
-                    <span class="card-arrow">→</span>
-
-                </a>
-
-            </div>
-
+      <div class="calculator" id="dolar">
+        <div class="label">CONVERSOR</div>
+        <h3>💵 ¿Cuántos dólares son tus pesos?</h3>
+        <div class="calc-grid">
+          <input id="arsInput" type="number" min="0" step="100" placeholder="Pesos argentinos">
+          <select id="rateSelect"><option value="official">Dólar oficial</option><option value="blue">Dólar blue</option></select>
+          <input id="usdInput" type="number" min="0" step="1" placeholder="USD (opcional)">
+          <button class="btn" id="convertBtn">Convertir</button>
         </div>
+        <div class="result" id="convertResult"></div>
+      </div>
 
-    </section>
-
-
-    <!-- OPORTUNIDADES -->
-
-    <section id="oportunidades">
-
-        <div class="container">
-
-            <div class="feature">
-
-                <div class="feature-label">
-                    WEBHOY RADAR
-                </div>
-
-                <h2>
-                    🔥 Oportunidades de hoy
-                </h2>
-
-                <p>
-                    Estamos preparando un radar para detectar
-                    precios interesantes, oportunidades y cosas
-                    que vale la pena conocer antes de comprar.
-                </p>
-
-                <a href="#tecnologia" class="button">
-                    Explorar →
-                </a>
-
-            </div>
-
+      <div class="calculator" id="cuotas">
+        <div class="label">CALCULADORA</div>
+        <h3>💳 ¿Cuánto terminás pagando?</h3>
+        <div class="calc-grid">
+          <input id="priceInput" type="number" min="0" step="100" placeholder="Precio">
+          <input id="installmentsInput" type="number" min="1" step="1" value="6" placeholder="Cuotas">
+          <input id="interestInput" type="number" min="0" step="0.1" value="0" placeholder="Interés total %">
+          <button class="btn" id="calcBtn">Calcular</button>
         </div>
-
-    </section>
-
-
-    <!-- HERRAMIENTAS -->
-
-    <section id="herramientas">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>🧮 Herramientas útiles</h2>
-
-                <p>
-                    Pequeñas herramientas para problemas reales.
-                </p>
-
-            </div>
-
-
-            <div class="tools">
-
-                <a href="#" class="tool">
-
-                    <strong>💵 Pesos ↔ dólares</strong>
-
-                    <span>
-                        Convertí valores rápidamente.
-                    </span>
-
-                </a>
-
-
-                <a href="#" class="tool">
-
-                    <strong>💳 Calculadora de cuotas</strong>
-
-                    <span>
-                        Calculá cuánto terminás pagando.
-                    </span>
-
-                </a>
-
-
-                <a href="#" class="tool">
-
-                    <strong>📈 Inflación</strong>
-
-                    <span>
-                        Compará el valor de tu dinero.
-                    </span>
-
-                </a>
-
-
-                <a href="#" class="tool">
-
-                    <strong>💰 Calculadora de ahorro</strong>
-
-                    <span>
-                        Calculá cuánto necesitás ahorrar.
-                    </span>
-
-                </a>
-
-
-                <a href="#" class="tool">
-
-                    <strong>🏠 Precio por m²</strong>
-
-                    <span>
-                        Analizá referencias inmobiliarias.
-                    </span>
-
-                </a>
-
-
-                <a href="#" class="tool">
-
-                    <strong>🧮 Más herramientas</strong>
-
-                    <span>
-                        Próximamente.
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- INMUEBLES -->
-
-    <section id="inmuebles">
-
-        <div class="container">
-
-            <div class="feature">
-
-                <div class="feature-label">
-                    VIVIENDA
-                </div>
-
-                <h2>
-                    🏠 ¿Cuánto vale una propiedad?
-                </h2>
-
-                <p>
-                    Estamos preparando herramientas para consultar
-                    precios de venta, alquileres y valores por metro
-                    cuadrado en distintos barrios.
-                </p>
-
-                <a
-                    href="https://bainmobiliaria.com.ar"
-                    target="_blank"
-                    rel="noopener"
-                    class="button">
-
-                    Explorar inmuebles →
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TECNOLOGIA -->
-
-    <section id="tecnologia">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>💻 Tecnología</h2>
-
-                <p>
-                    Antes de comprar, informate.
-                </p>
-
-            </div>
-
-
-            <div class="grid">
-
-                <a href="#" class="card">
-
-                    <div class="card-icon">💻</div>
-
-                    <h3>Notebooks</h3>
-
-                    <p>
-                        Qué comprar, cuánto gastar y qué especificaciones
-                        realmente necesitás.
-                    </p>
-
-                    <span class="card-arrow">→</span>
-
-                </a>
-
-
-                <a href="#" class="card">
-
-                    <div class="card-icon">📱</div>
-
-                    <h3>Celulares</h3>
-
-                    <p>
-                        Comparaciones sencillas para elegir mejor.
-                    </p>
-
-                    <span class="card-arrow">→</span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICIOS -->
-
-    <section>
-
-        <div class="container">
-
-            <div class="service">
-
-                <div>
-
-                    <h2>
-                        🚀 ¿Necesitás una web?
-                    </h2>
-
-                    <p>
-                        Creamos páginas rápidas, simples y adaptadas
-                        a celulares para negocios y emprendimientos.
-                    </p>
-
-                </div>
-
-
-                <a
-                    class="button whatsapp"
-                    href="https://wa.me/5491170629733?text=Hola%20WebHoy!%20Me%20interesan%20los%20servicios%20web."
-                    target="_blank"
-                    rel="noopener">
-
-                    💬 Hablar por WhatsApp
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
+        <div class="result" id="installmentResult"></div>
+        <div class="note">Estimación matemática simple: interés total distribuido entre las cuotas. No reemplaza las condiciones reales de una financiación.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inmuebles">
+    <div class="container">
+      <div class="panel">
+        <div class="label">VIVIENDA</div>
+        <h2>🏠 ¿Cuánto vale una propiedad?</h2>
+        <p>Estamos preparando herramientas de precios, alquileres y valor por m² para distintos barrios.</p>
+        <br>
+        <a class="btn" href="https://bainmobiliaria.com.ar" target="_blank" rel="noopener">Explorar Bainmobiliaria →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologia">
+    <div class="container">
+      <div class="section-title"><h2>💻 Tecnología</h2><p>Antes de comprar, informate.</p></div>
+      <div class="grid">
+        <a class="card searchable" data-keywords="notebook laptop 32gb ram computadora tecnologia" href="#oportunidades"><div class="icon">💻</div><h3>Notebooks</h3><p>Qué mirar, cuánto gastar y qué especificaciones realmente necesitás.</p><span class="arrow">→</span></a>
+        <a class="card searchable" data-keywords="celular telefono smartphone tecnologia" href="#oportunidades"><div class="icon">📱</div><h3>Celulares</h3><p>Comparaciones sencillas para elegir mejor.</p><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="service">
+        <div><h2>🚀 ¿Necesitás una web?</h2><p>Creamos páginas rápidas, simples y adaptadas a celulares para negocios y emprendimientos.</p></div>
+        <a class="btn whatsapp" href="https://wa.me/5491170629733?text=Hola%20WebHoy!%20Me%20interesan%20los%20servicios%20web." target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-
 <footer>
-
-    <div class="container footer-inner">
-
-        <div>
-            © 2026 WebHoy.com.ar
-        </div>
-
-        <div class="social">
-
-            <a
-                href="https://www.instagram.com/tuwebhoy"
-                target="_blank"
-                rel="noopener">
-                Instagram
-            </a>
-
-            <a
-                href="https://www.facebook.com/webhoycomar"
-                target="_blank"
-                rel="noopener">
-                Facebook
-            </a>
-
-            <a
-                href="https://wa.me/5491170629733"
-                target="_blank"
-                rel="noopener">
-                WhatsApp
-            </a>
-
-        </div>
-
+  <div class="container footer">
+    <div>© 2026 WebHoy.com.ar</div>
+    <div class="social">
+      <a href="https://www.instagram.com/tuwebhoy" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/webhoycomar" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/5491170629733" target="_blank" rel="noopener">WhatsApp</a>
     </div>
-
+  </div>
 </footer>
 
-
 <script>
+  const search = document.getElementById('search');
+  const items = [...document.querySelectorAll('.searchable')];
+  const noResults = document.getElementById('noResults');
 
-    const search = document.getElementById("search");
-
-    search.addEventListener("keydown", function(event) {
-
-        if (event.key === "Enter") {
-
-            const query = search.value.trim();
-
-            if (!query) return;
-
-            alert(
-                "Estamos preparando el buscador de WebHoy para: " +
-                query
-            );
-
-        }
-
+  search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    if (!q) {
+      items.forEach(x => x.classList.remove('hidden'));
+      noResults.classList.add('hidden');
+      return;
+    }
+    let found = 0;
+    items.forEach(item => {
+      const match = (item.dataset.keywords || '').toLowerCase().includes(q) ||
+                    item.innerText.toLowerCase().includes(q);
+      item.classList.toggle('hidden', !match);
+      if (match) found++;
     });
+    noResults.classList.toggle('hidden', found > 0);
+  });
 
+  const money = n => new Intl.NumberFormat('es-AR', {
+    style:'currency', currency:'ARS', maximumFractionDigits:0
+  }).format(n);
+
+  let rates = {official:null, blue:null};
+
+  async function loadDollar(url, key, statusId, outputId) {
+    const status = document.getElementById(statusId);
+    const output = document.getElementById(outputId);
+    try {
+      const res = await fetch(url, {cache:'no-store'});
+      if (!res.ok) throw new Error('API');
+      const data = await res.json();
+      rates[key] = Number(data.venta);
+      output.textContent = money(rates[key]);
+      status.textContent = 'actualizado';
+    } catch {
+      status.textContent = 'sin datos';
+      output.textContent = '—';
+    }
+  }
+
+  loadDollar('https://dolarapi.com/v1/dolares/oficial','official','officialStatus','officialSell');
+  loadDollar('https://dolarapi.com/v1/dolares/blue','blue','blueStatus','blueSell');
+
+  document.getElementById('convertBtn').addEventListener('click', () => {
+    const ars = Number(document.getElementById('arsInput').value);
+    const usd = Number(document.getElementById('usdInput').value);
+    const rate = rates[document.getElementById('rateSelect').value];
+    const result = document.getElementById('convertResult');
+
+    if (!rate) {
+      result.style.display='block';
+      result.innerHTML='<strong>Cotización todavía no disponible.</strong><br>Probá nuevamente en unos segundos.';
+      return;
+    }
+
+    if (ars > 0) {
+      result.style.display='block';
+      result.innerHTML=`<strong>${(ars / rate).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})} USD</strong><br><span class="note">Usando una cotización de venta de ${money(rate)}.</span>`;
+    } else if (usd > 0) {
+      result.style.display='block';
+      result.innerHTML=`<strong>${money(usd * rate)}</strong><br><span class="note">Usando una cotización de venta de ${money(rate)}.</span>`;
+    } else {
+      result.style.display='block';
+      result.innerHTML='<strong>Ingresá un monto.</strong>';
+    }
+  });
+
+  document.getElementById('calcBtn').addEventListener('click', () => {
+    const price = Number(document.getElementById('priceInput').value);
+    const n = Number(document.getElementById('installmentsInput').value);
+    const interest = Number(document.getElementById('interestInput').value);
+    const result = document.getElementById('installmentResult');
+
+    if (!(price > 0) || !(n > 0) || interest < 0) {
+      result.style.display='block';
+      result.innerHTML='<strong>Completá los datos.</strong>';
+      return;
+    }
+
+    const total = price * (1 + interest / 100);
+    const installment = total / n;
+
+    result.style.display='block';
+    result.innerHTML=`<strong>${money(installment)} por cuota</strong><br>Total estimado: <strong>${money(total)}</strong>`;
+  });
 </script>
-
 </body>
 </html>
-        
-    
+               
